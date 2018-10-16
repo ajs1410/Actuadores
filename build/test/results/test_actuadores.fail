@@ -6,12 +6,15 @@
 - :test: test_actuadoresOffAfterCreate
   :line: 25
   :message: ''
-:failures: []
+:failures:
+- :test: test_encenderActuadores
+  :line: 46
+  :message: Expected 0x00 Was 0x03
 :ignores: []
 :counts:
-  :total: 1
+  :total: 2
   :passed: 1
-  :failed: 0
+  :failed: 1
   :ignored: 0
 :stdout: []
-:time: 0.0029993860007380135
+:time: 0.0074411900004633935

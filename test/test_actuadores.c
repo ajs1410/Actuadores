@@ -36,4 +36,15 @@ TEST_ASSERT_EQUAL_HEX16(0x0000,ptAct[5].PWM_actual);
 }
 
 
+void test_encenderActuadores(void){
+actuador_t  ptAct[6];
+uint8_t Enc_act=0b00111110;
+
+Actuadores_Create(&ptAct[0]); // retorna con todos los pwm apagados
+Actuadores_Encender(&ptAct[0], Enc_act);
+
+TEST_ASSERT_EQUAL_HEX8(INICIO_ENCENDIDO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
+
+
+}
 

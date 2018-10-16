@@ -19,7 +19,7 @@ QueueHandle_t queActuadores[Nactuadores];
 #define NO_TEST 0
 
 
-//
+// Inicializa a todos los actuadores apagados
 void Actuadores_Create(actuador_t * ptAct){
 uint16_t i;
 for(i = 0; i < Nactuadores ; i++){
@@ -31,4 +31,17 @@ for(i = 0; i < Nactuadores ; i++){
 
 }
 
+
+// enciende los actuadores indicados en la palabra Enc_act
+void Actuadores_Encender(actuador_t * ptAct, uint8_t Enc_act){
+
+uint16_t i;
+for(i = 0; i < Nactuadores ; i++){
+	if ( (Enc_act >> i) & 1 ){
+		Actuadores[i].estado = INICIO_ENCENDIDO;
+		ptAct[i].estado = Actuadores[i].estado;  // retornamos el estado de los actuadores
+	}
+}
+
+}
 
