@@ -81,7 +81,7 @@ void test_encenderActuadores(void){
 
 actuador_t ptAct[6];
 
-uint8_t Enc_act=0b00111110;
+uint8_t Enc_act=0b00111111;
 
 
 
@@ -96,6 +96,82 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)
 ((void *)0)
 
 ), (UNITY_UINT)(46), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(47), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(48), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(49), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(50), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(51), UNITY_DISPLAY_STYLE_HEX8);
+
+
+
+Enc_act=0b00010101;
+
+Actuadores_Create(&ptAct[0]);
+
+Actuadores_Encender(&ptAct[0], Enc_act);
+
+
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(57), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(58), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(59), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(60), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
