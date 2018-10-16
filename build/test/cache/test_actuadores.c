@@ -178,3 +178,29 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_IN
 
 
 }
+
+
+
+
+
+void test_apagarActuadores(void){
+
+actuador_t ptAct[6];
+
+uint8_t Apagar_act=0b00111111;
+
+
+
+Actuadores_Create(&ptAct[0]);
+
+Actuadores_Apagar(&ptAct[0], Enc_act);
+
+
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(75), UNITY_DISPLAY_STYLE_HEX8);
+
+}
