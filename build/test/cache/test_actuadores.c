@@ -193,14 +193,74 @@ uint8_t Apagar_act=0b00111111;
 
 Actuadores_Create(&ptAct[0]);
 
-Actuadores_Apagar(&ptAct[0], Enc_act);
+Actuadores_Apagar(&ptAct[0], Apagar_act);
 
 
 
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
 
 ((void *)0)
 
 ), (UNITY_UINT)(75), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(76), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(78), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(79), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(80), UNITY_DISPLAY_STYLE_HEX8);
+
+
+
+Apagar_act=0b00010101;
+
+Actuadores_Create(&ptAct[0]);
+
+Actuadores_Apagar(&ptAct[0], Apagar_act);
+
+
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(86), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_HEX8);
+
+
 
 }

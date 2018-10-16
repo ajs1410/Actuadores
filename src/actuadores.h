@@ -30,11 +30,13 @@ uint16_t Tiempo[NESTADOStiempo];
 
 
 
-//accionaract_t est_acts;
+
 
 
 
 void Actuadores_Create(actuador_t * ptAct);
+void Actuadores_Encender(actuador_t * ptAct, uint8_t Enc_act);
+void Actuadores_Apagar(actuador_t * ptAct, uint8_t Apagar_act);
 
 
 #ifdef __cplusplus
