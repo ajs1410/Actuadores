@@ -58,3 +58,36 @@ for(i = 0; i < Nactuadores ; i++){
 
 }
 
+// Estados del actuador 
+// ES LLAMADO DESDE UN TIMER
+void Actuadores_MEF(actuador_t *Act){
+
+switch(Act->estado){
+	case INICIO_ENCENDIDO:
+		Act->PWM_actual = Act->Porcentaje_pwm[INICIO_ENCENDIDO];
+		Act->Tiempo_actual = Act->Tiempo[TIEMPO_INICIO_ENCENDIDO];
+		Act->estado = MANTENCION_ENCENDIDO;
+		break;	
+
+	case MANTENCION_ENCENDIDO:
+		if(Act->Tiempo_actual== 0)
+			Act->PWM_actual = Act->Porcentaje_pwm[MANTENCION_ENCENDIDO];
+		break;	
+
+	case INICIO_APAGADO:
+		Act->PWM_actual = Act->Porcentaje_pwm[INICIO_APAGADO];
+		Act->Tiempo_actual = Act->Tiempo[TIEMPO_INICIO_APAGADO];
+		Act->estado = MANTENCION_APAGADO;
+		break;	
+
+	case MANTENCION_APAGADO:
+		if(Act->Tiempo_actual== 0)
+		Act->PWM_actual = Act->Porcentaje_pwm[MANTENCION_APAGADO];
+		break;
+	
+	default: 
+		Act->PWM_actual = Act->Porcentaje_pwm[MANTENCION_APAGADO];
+		break;
+
+	}
+}

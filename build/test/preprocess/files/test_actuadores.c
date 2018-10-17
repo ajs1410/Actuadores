@@ -264,3 +264,35 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(U
 
 
 }
+
+
+
+
+
+void test_estadosActuadores(void){
+
+actuador_t ptAct[6];
+
+uint8_t Enc_act=0b00111111;
+
+
+
+Actuadores_Create(&ptAct[0]);
+
+Actuadores_Encender(&ptAct[0], Enc_act);
+
+
+
+
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(101), UNITY_DISPLAY_STYLE_HEX8);
+
+
+
+
+
+}
