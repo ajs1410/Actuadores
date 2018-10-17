@@ -108,26 +108,26 @@ TEST_ASSERT_EQUAL_HEX8(MANTENCION_APAGADO,ptAct[0].estado); // verifico que todo
 
 
 }
+  
 
+// teste que verifica el encendido de un actuador a tra ves de una tabla.
 void test_ejecutarTabla(void){
 actuador_t  ptAct[6];
-uint8_t Enc_act=0b00111111;
-uint8_t Apagar_act=0b00111111;
-uint16_t tabla;
-tabla = Apagar_act << 8;
-tabla = tabla || Enc_act;
+uint8_t Enc_act   =0b00010101;
+uint8_t Apagar_act=0b00101010;
+uint16_t tabla   = 0b0010101000010101;
 
 Actuadores_Create(&ptAct[0]); // retorna con todos los pwm apagados
-Actuadores_Apagar(&ptAct[0], Apagar_act);
-//Actuadores_EjecutarTabla(&ptAct[0], tabla)
+
+Actuadores_EjecutarTabla(&ptAct[0], tabla);
 
 
 
 TEST_ASSERT_EQUAL_HEX8(INICIO_ENCENDIDO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
 TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[1].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[2].estado);
+TEST_ASSERT_EQUAL_HEX8(INICIO_ENCENDIDO,ptAct[2].estado);
 TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[3].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[4].estado);
+TEST_ASSERT_EQUAL_HEX8(INICIO_ENCENDIDO,ptAct[4].estado);
 TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[5].estado);
 
 

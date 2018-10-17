@@ -315,27 +315,27 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_IN
 
 
 
+
+
+
+
 void test_ejecutarTabla(void){
 
 actuador_t ptAct[6];
 
-uint8_t Enc_act=0b00111111;
+uint8_t Enc_act =0b00010101;
 
-uint8_t Apagar_act=0b00111111;
+uint8_t Apagar_act=0b00101010;
 
-uint16_t tabla;
-
-tabla = Apagar_act << 8;
-
-tabla = tabla || Enc_act;
+uint16_t tabla = 0b0010101000010101;
 
 
 
 Actuadores_Create(&ptAct[0]);
 
-Actuadores_Apagar(&ptAct[0], Apagar_act);
 
 
+Actuadores_EjecutarTabla(&ptAct[0], tabla);
 
 
 
@@ -355,7 +355,7 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(U
 
 ), (UNITY_UINT)(127), UNITY_DISPLAY_STYLE_HEX8);
 
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
 
 ((void *)0)
 
@@ -367,7 +367,7 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(U
 
 ), (UNITY_UINT)(129), UNITY_DISPLAY_STYLE_HEX8);
 
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
 
 ((void *)0)
 

@@ -78,7 +78,7 @@ int main(void)
   RUN_TEST(test_encenderActuadores, 39);
   RUN_TEST(test_apagarActuadores, 68);
   RUN_TEST(test_estadosActuadores, 94);
-  RUN_TEST(test_ejecutarTabla, 112);
+  RUN_TEST(test_ejecutarTabla, 114);
 
   return suite_teardown(UnityEnd());
 }

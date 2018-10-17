@@ -15,15 +15,15 @@
 - :test: test_estadosActuadores
   :line: 94
   :message: ''
-:failures:
 - :test: test_ejecutarTabla
-  :line: 126
-  :message: Expected 0x00 Was 0x02
+  :line: 114
+  :message: ''
+:failures: []
 :ignores: []
 :counts:
   :total: 5
-  :passed: 4
-  :failed: 1
+  :passed: 5
+  :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.00401758099997096
+:time: 0.0020555729997795424
