@@ -275,21 +275,35 @@ actuador_t ptAct[6];
 
 uint8_t Enc_act=0b00111111;
 
+uint8_t Apagar_act=0b00111111;
+
 
 
 Actuadores_Create(&ptAct[0]);
 
+
+
 Actuadores_Encender(&ptAct[0], Enc_act);
 
+Actuadores_MEF(&ptAct[0]);
 
-
-
-
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(101), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(102), UNITY_DISPLAY_STYLE_HEX8);
+
+
+
+Actuadores_Apagar(&ptAct[0], Apagar_act);
+
+Actuadores_MEF(&ptAct[0]);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(106), UNITY_DISPLAY_STYLE_HEX8);
 
 
 

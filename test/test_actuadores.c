@@ -93,12 +93,17 @@ TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[4].estado);
 void test_estadosActuadores(void){
 actuador_t  ptAct[6];
 uint8_t Enc_act=0b00111111;
+uint8_t Apagar_act=0b00111111;
 
 Actuadores_Create(&ptAct[0]); // retorna con todos los pwm apagados
-Actuadores_Encender(&ptAct[0], Enc_act);
 
-//ptAct[0].estado = 
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
+Actuadores_Encender(&ptAct[0], Enc_act);
+Actuadores_MEF(&ptAct[0]);
+TEST_ASSERT_EQUAL_HEX8(MANTENCION_ENCENDIDO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
+
+Actuadores_Apagar(&ptAct[0], Apagar_act);
+Actuadores_MEF(&ptAct[0]);
+TEST_ASSERT_EQUAL_HEX8(MANTENCION_APAGADO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
 
 
 }

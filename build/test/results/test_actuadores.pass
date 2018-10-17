@@ -12,15 +12,15 @@
 - :test: test_apagarActuadores
   :line: 68
   :message: ''
-:failures:
 - :test: test_estadosActuadores
-  :line: 101
-  :message: Expected 0x02 Was 0x00
+  :line: 93
+  :message: ''
+:failures: []
 :ignores: []
 :counts:
   :total: 4
-  :passed: 3
-  :failed: 1
+  :passed: 4
+  :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0034302209999168554
+:time: 0.007672595000258298
