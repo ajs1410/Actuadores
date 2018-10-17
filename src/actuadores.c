@@ -58,6 +58,9 @@ for(i = 0; i < Nactuadores ; i++){
 
 }
 
+
+
+
 // Estados del actuador 
 // ES LLAMADO DESDE UN TIMER
 void Actuadores_MEF(actuador_t *Act){
@@ -91,3 +94,10 @@ switch(Act->estado){
 
 	}
 }
+
+// recive datos de una tabla y enciendo/apaga el actuador segun indique los valores de la tabla.
+void Actuadores_EjecutarTabla(actuador_t * ptAct, uint16_t tabla){
+Actuadores_Encender(ptAct, (uint8_t)(0x00ff & tabla));
+Actuadores_Apagar  (ptAct, (uint8_t)(tabla >> 8));
+} 
+

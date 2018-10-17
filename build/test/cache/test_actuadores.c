@@ -269,6 +269,8 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(U
 
 
 
+
+
 void test_estadosActuadores(void){
 
 actuador_t ptAct[6];
@@ -291,7 +293,7 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_ENCENDIDO)), (UNITY_
 
 ((void *)0)
 
-), (UNITY_UINT)(102), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(103), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -303,7 +305,79 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_IN
 
 ((void *)0)
 
-), (UNITY_UINT)(106), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(107), UNITY_DISPLAY_STYLE_HEX8);
+
+
+
+
+
+}
+
+
+
+void test_ejecutarTabla(void){
+
+actuador_t ptAct[6];
+
+uint8_t Enc_act=0b00111111;
+
+uint8_t Apagar_act=0b00111111;
+
+uint16_t tabla;
+
+tabla = Apagar_act << 8;
+
+tabla = tabla || Enc_act;
+
+
+
+Actuadores_Create(&ptAct[0]);
+
+Actuadores_Apagar(&ptAct[0], Apagar_act);
+
+
+
+
+
+
+
+
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(126), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(127), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(128), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(129), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(130), UNITY_DISPLAY_STYLE_HEX8);
+
+UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
+
+((void *)0)
+
+), (UNITY_UINT)(131), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
