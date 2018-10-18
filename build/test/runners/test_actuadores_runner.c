@@ -37,9 +37,6 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_actuadoresOffAfterCreate(void);
 extern void test_encenderActuadores(void);
-extern void test_apagarActuadores(void);
-extern void test_estadosActuadores(void);
-extern void test_ejecutarTabla(void);
 
 
 /*=======Suite Setup=====*/
@@ -75,10 +72,7 @@ int main(void)
   suite_setup();
   UnityBegin("test_actuadores.c");
   RUN_TEST(test_actuadoresOffAfterCreate, 25);
-  RUN_TEST(test_encenderActuadores, 69);
-  RUN_TEST(test_apagarActuadores, 98);
-  RUN_TEST(test_estadosActuadores, 124);
-  RUN_TEST(test_ejecutarTabla, 144);
+  RUN_TEST(test_encenderActuadores, 51);
 
   return suite_teardown(UnityEnd());
 }

@@ -7,23 +7,14 @@
   :line: 25
   :message: ''
 - :test: test_encenderActuadores
-  :line: 69
-  :message: ''
-- :test: test_apagarActuadores
-  :line: 98
-  :message: ''
-- :test: test_estadosActuadores
-  :line: 124
-  :message: ''
-- :test: test_ejecutarTabla
-  :line: 144
+  :line: 51
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 2
+  :passed: 2
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.009427553999557858
+:time: 0.0049634200004220475

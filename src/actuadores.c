@@ -32,30 +32,20 @@ for(i = 0; i < Nactuadores ; i++){
 }
 
 
-// enciende los actuadores indicados en la palabra Enc_act
-void Actuadores_Encender(actuador_t * ptAct, uint8_t Enc_act){
-
-uint16_t i;
-for(i = 0; i < Nactuadores ; i++){
-	if ( (Enc_act >> i) & 1 ){
-		Actuadores[i].estado = INICIO_ENCENDIDO;
-		ptAct[i].estado = Actuadores[i].estado;  // retornamos el estado de los actuadores
+// enciende el actuador indicadoen el indice(retorna los datos del actuador encedido
+void Actuadores_Encender(actuador_t * ptAct, uint8_t Ind_actuador){
+	if (Ind_actuador < Nactuadores){
+		Actuadores[Ind_actuador].estado = INICIO_ENCENDIDO;
+		ptAct->estado = Actuadores[Ind_actuador].estado;  // retornamos el estado de los actuadores
 	}
-}
-
 }
 
 //apaga los actuadores indicados en la palabra Enc_act
-void Actuadores_Apagar(actuador_t * ptAct, uint8_t Apagar_act){
-
-uint16_t i;
-for(i = 0; i < Nactuadores ; i++){
-	if ( (Apagar_act >> i) & 1 ){
-		Actuadores[i].estado = INICIO_APAGADO;
-		ptAct[i].estado = Actuadores[i].estado;  // retornamos el estado de los actuadores
+void Actuadores_Apagar(actuador_t * ptAct, uint8_t Ind_actuador){
+	if (Ind_actuador < Nactuadores){
+		Actuadores[Ind_actuador].estado = INICIO_APAGADO;
+		ptAct->estado = Actuadores[Ind_actuador].estado;  // retornamos el estado de los actuadores
 	}
-}
-
 }
 
 
@@ -95,12 +85,14 @@ switch(Act->estado){
 	}
 }
 
+#if 0
+
 // recive datos de una tabla y enciendo/apaga el actuador segun indique los valores de la tabla.
 void Actuadores_EjecutarTabla(actuador_t * ptAct, uint16_t tabla){
 Actuadores_Encender(ptAct, (uint8_t)(0x00ff & tabla));
 Actuadores_Apagar  (ptAct, (uint8_t)(tabla >> 8));
 } 
-
+#endif
 
 //------------------------------------------------------------------------------------------------------------------
 #if 0
