@@ -124,3 +124,59 @@ actuador_t ptAct[6];
 
 
 }
+
+
+
+
+
+
+
+
+
+void test_apagarActuadores(void){
+
+actuador_t ptAct[6];
+
+ const struct ejemplo_s{
+
+ uint16_t pwm;
+
+ uint8_t estado;
+
+ }ejemplos[] = {
+
+ {.pwm = 0, .estado = INICIO_APAGADO},
+
+ {.pwm = 0, .estado = INICIO_APAGADO},
+
+ {.pwm = 0, .estado = INICIO_APAGADO},
+
+ {.pwm = 0, .estado = INICIO_APAGADO},
+
+ {.pwm = 0, .estado = INICIO_APAGADO},
+
+ {.pwm = 0, .estado = INICIO_APAGADO},
+
+ };
+
+ uint8_t indice;
+
+ char mensaje[64];
+
+ Actuadores_Create(&ptAct[0]);
+
+
+
+ for( indice = 0; indice < sizeof(ejemplos)/sizeof (struct ejemplo_s); indice++){
+
+  Actuadores_Apagar(&ptAct[indice], indice);
+
+  sprintf(mensaje, "Test Estado Actuador: %d", indice);
+
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(99), UNITY_DISPLAY_STYLE_INT);
+
+ }
+
+
+
+}

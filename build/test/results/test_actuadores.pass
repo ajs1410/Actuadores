@@ -9,12 +9,15 @@
 - :test: test_encenderActuadores
   :line: 51
   :message: ''
+- :test: test_apagarActuadores
+  :line: 79
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 2
-  :passed: 2
+  :total: 3
+  :passed: 3
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0049634200004220475
+:time: 0.0023324150024564005

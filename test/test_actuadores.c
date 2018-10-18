@@ -73,33 +73,34 @@ actuador_t  ptAct[6];
 
 }
 
-#if 0
+
 
 // test que comprueba que esten apagado los actuadores
 void test_apagarActuadores(void){
 actuador_t  ptAct[6];
-uint8_t Apagar_act=0b00111111;
-
-Actuadores_Create(&ptAct[0]); // retorna con todos los pwm apagados
-Actuadores_Apagar(&ptAct[0], Apagar_act);
-
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[1].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[2].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[3].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[4].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[5].estado);
-
-Apagar_act=0b00010101;
-Actuadores_Create(&ptAct[0]); // retorna con todos los pwm apagados
-Actuadores_Apagar(&ptAct[0], Apagar_act);
-
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[0].estado); // verifico que esten encendidos unicamente los actuadores indicados.
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[2].estado);
-TEST_ASSERT_EQUAL_HEX8(INICIO_APAGADO,ptAct[4].estado);
+	const struct ejemplo_s{
+	uint16_t pwm;
+	uint8_t estado;
+	}ejemplos[] = {
+	{.pwm = 0,  .estado = INICIO_APAGADO}, 
+	{.pwm = 0,  .estado = INICIO_APAGADO}, 
+	{.pwm = 0,  .estado = INICIO_APAGADO},
+	{.pwm = 0,  .estado = INICIO_APAGADO},
+	{.pwm = 0,  .estado = INICIO_APAGADO},
+	{.pwm = 0,  .estado = INICIO_APAGADO}, 
+	};
+	uint8_t indice;
+	char mensaje[64];
+	Actuadores_Create(&ptAct[0]);		// retorna con todos los pwm apagados
+	
+	for( indice = 0; indice < sizeof(ejemplos)/sizeof (struct ejemplo_s); indice++){
+		Actuadores_Apagar(&ptAct[indice], indice);
+		sprintf(mensaje, "Test Estado Actuador: %d", indice);
+		TEST_ASSERT_EQUAL_MESSAGE(ejemplos[indice].estado, ptAct[indice].estado, mensaje);
+	}
 
 }
-#endif
+
 
 
 #if 0
