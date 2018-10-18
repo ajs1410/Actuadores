@@ -29,45 +29,51 @@ void test_actuadoresOffAfterCreate(void){
 
 actuador_t ptAct[6];
 
-Actuadores_Create(&ptAct[0]);
+ const struct ejemplo_s{
+
+ uint16_t pwm;
+
+ uint8_t estado;
+
+ }ejemplos[] = {
+
+ {.pwm = 0, .estado = MANTENCION_APAGADO},
+
+ {.pwm = 0, .estado = MANTENCION_APAGADO},
+
+ {.pwm = 0, .estado = MANTENCION_APAGADO},
+
+ {.pwm = 0, .estado = MANTENCION_APAGADO},
+
+ {.pwm = 0, .estado = MANTENCION_APAGADO},
+
+ {.pwm = 0, .estado = MANTENCION_APAGADO},
+
+ };
+
+ uint8_t indice;
+
+ char mensaje[64];
+
+ Actuadores_Create(&ptAct[0]);
+
+ for( indice = 0; indice < sizeof(ejemplos)/sizeof (struct ejemplo_s); indice++){
+
+  sprintf(mensaje, "Test PWM Actuador: %d", indice);
+
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].pwm)), (UNITY_INT)((ptAct[indice].PWM_actual)), ((mensaje)), (UNITY_UINT)(58), UNITY_DISPLAY_STYLE_INT);
+
+  sprintf(mensaje, "Test Estado Actuador: %d", indice);
+
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(60), UNITY_DISPLAY_STYLE_INT);
+
+ }
 
 
 
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT16)((0x0000)), (UNITY_INT)(UNITY_INT16)((ptAct[0].PWM_actual)), (
 
-((void *)0)
 
-), (UNITY_UINT)(29), UNITY_DISPLAY_STYLE_HEX16);
 
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT16)((0x0000)), (UNITY_INT)(UNITY_INT16)((ptAct[1].PWM_actual)), (
-
-((void *)0)
-
-), (UNITY_UINT)(30), UNITY_DISPLAY_STYLE_HEX16);
-
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT16)((0x0000)), (UNITY_INT)(UNITY_INT16)((ptAct[2].PWM_actual)), (
-
-((void *)0)
-
-), (UNITY_UINT)(31), UNITY_DISPLAY_STYLE_HEX16);
-
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT16)((0x0000)), (UNITY_INT)(UNITY_INT16)((ptAct[3].PWM_actual)), (
-
-((void *)0)
-
-), (UNITY_UINT)(32), UNITY_DISPLAY_STYLE_HEX16);
-
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT16)((0x0000)), (UNITY_INT)(UNITY_INT16)((ptAct[4].PWM_actual)), (
-
-((void *)0)
-
-), (UNITY_UINT)(33), UNITY_DISPLAY_STYLE_HEX16);
-
-UnityAssertEqualNumber((UNITY_INT)(UNITY_INT16)((0x0000)), (UNITY_INT)(UNITY_INT16)((ptAct[5].PWM_actual)), (
-
-((void *)0)
-
-), (UNITY_UINT)(34), UNITY_DISPLAY_STYLE_HEX16);
 
 
 
@@ -95,37 +101,37 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)
 
 ((void *)0)
 
-), (UNITY_UINT)(46), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(76), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(47), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(48), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(78), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(49), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(79), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(50), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(80), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(51), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(81), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -141,37 +147,37 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)
 
 ((void *)0)
 
-), (UNITY_UINT)(57), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(58), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(59), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(60), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(91), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(92), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -201,37 +207,37 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(U
 
 ((void *)0)
 
-), (UNITY_UINT)(75), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(105), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(76), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(106), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(77), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(107), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(78), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(108), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(79), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(109), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(80), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(110), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -247,19 +253,19 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(U
 
 ((void *)0)
 
-), (UNITY_UINT)(86), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(118), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -293,7 +299,7 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_ENCENDIDO)), (UNITY_
 
 ((void *)0)
 
-), (UNITY_UINT)(103), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(133), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -305,7 +311,7 @@ UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((MANTENCION_APAGADO)), (UNITY_IN
 
 ((void *)0)
 
-), (UNITY_UINT)(107), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(137), UNITY_DISPLAY_STYLE_HEX8);
 
 
 
@@ -341,45 +347,41 @@ Actuadores_EjecutarTabla(&ptAct[0], tabla);
 
 
 
-
-
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[0].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(126), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(155), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[1].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(127), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(156), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[2].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(128), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(157), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[3].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(129), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(158), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_ENCENDIDO)), (UNITY_INT)(UNITY_INT8 )((ptAct[4].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(130), UNITY_DISPLAY_STYLE_HEX8);
+), (UNITY_UINT)(159), UNITY_DISPLAY_STYLE_HEX8);
 
 UnityAssertEqualNumber((UNITY_INT)(UNITY_INT8 )((INICIO_APAGADO)), (UNITY_INT)(UNITY_INT8 )((ptAct[5].estado)), (
 
 ((void *)0)
 
-), (UNITY_UINT)(131), UNITY_DISPLAY_STYLE_HEX8);
-
-
+), (UNITY_UINT)(160), UNITY_DISPLAY_STYLE_HEX8);
 
 
 

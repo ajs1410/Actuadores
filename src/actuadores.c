@@ -101,3 +101,39 @@ Actuadores_Encender(ptAct, (uint8_t)(0x00ff & tabla));
 Actuadores_Apagar  (ptAct, (uint8_t)(tabla >> 8));
 } 
 
+
+//------------------------------------------------------------------------------------------------------------------
+#if 0
+struct
+uint16_t cuenta;
+void (*funcion) (void);
+} cola [Nactuadores];
+
+
+void configurar_temporizadores(void){
+cola[0].cuenta = 0;
+configurar_interrupcion(100);
+}
+
+uint8_t temporizadores_activos (void){
+return 0;
+}
+
+
+void programar_cuenta(uint16_t espera, void (*evento) (void)){
+cola[0].cuenta  = espera;
+cola[0].funcion = evento;
+
+}
+
+void incrementar_decima(void){
+	if(cola[0].cuenta > 0){
+		cola[0].cuenta--;
+		if(cola[0].cuenta == 0){
+			cola[0].funcion();
+		}
+	}
+}
+
+
+#endif

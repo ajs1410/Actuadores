@@ -75,10 +75,10 @@ int main(void)
   suite_setup();
   UnityBegin("test_actuadores.c");
   RUN_TEST(test_actuadoresOffAfterCreate, 25);
-  RUN_TEST(test_encenderActuadores, 39);
-  RUN_TEST(test_apagarActuadores, 68);
-  RUN_TEST(test_estadosActuadores, 94);
-  RUN_TEST(test_ejecutarTabla, 114);
+  RUN_TEST(test_encenderActuadores, 69);
+  RUN_TEST(test_apagarActuadores, 98);
+  RUN_TEST(test_estadosActuadores, 124);
+  RUN_TEST(test_ejecutarTabla, 144);
 
   return suite_teardown(UnityEnd());
 }
