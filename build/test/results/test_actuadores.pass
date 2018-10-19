@@ -12,12 +12,15 @@
 - :test: test_apagarActuadores
   :line: 79
   :message: ''
+- :test: test_estadosActuadores
+  :line: 106
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 3
-  :passed: 3
+  :total: 4
+  :passed: 4
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0023324150024564005
+:time: 0.005328056002326775

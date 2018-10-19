@@ -102,28 +102,51 @@ actuador_t  ptAct[6];
 }
 
 
-
-#if 0
-
 // test que verifica la maquina de estados.
 void test_estadosActuadores(void){
 actuador_t  ptAct[6];
-uint8_t Enc_act=0b00111111;
-uint8_t Apagar_act=0b00111111;
+	const struct ejemplo_s{
+	uint16_t pwm;
+	uint8_t estado;
+	}ejemplos1[] = {
+	{.pwm = 0,  .estado = MANTENCION_APAGADO}, 
+	{.pwm = 0,  .estado = MANTENCION_APAGADO}, 
+	{.pwm = 0,  .estado = MANTENCION_APAGADO},
+	{.pwm = 0,  .estado = MANTENCION_APAGADO},
+	{.pwm = 0,  .estado = MANTENCION_APAGADO},
+	{.pwm = 0,  .estado = MANTENCION_APAGADO}, 
+	}, ejemplos2[] = {
+	{.pwm = 0,  .estado = MANTENCION_ENCENDIDO}, 
+	{.pwm = 0,  .estado = MANTENCION_ENCENDIDO}, 
+	{.pwm = 0,  .estado = MANTENCION_ENCENDIDO},
+	{.pwm = 0,  .estado = MANTENCION_ENCENDIDO},
+	{.pwm = 0,  .estado = MANTENCION_ENCENDIDO},
+	{.pwm = 0,  .estado = MANTENCION_ENCENDIDO}, 
+	};
+	uint8_t indice;
+	char mensaje[64];
+	Actuadores_Create(&ptAct[0]);		// retorna con todos los pwm apagados
 
-Actuadores_Create(&ptAct[0]); // retorna con todos los pwm apagados
+	for( indice = 0; indice < sizeof(ejemplos1)/sizeof (struct ejemplo_s); indice++){
+		Actuadores_Apagar(&ptAct[indice], indice);
+		Actuadores_MEF(&ptAct[indice]);
+		sprintf(mensaje, "Test Estado Actuador: %d", indice);
+		TEST_ASSERT_EQUAL_MESSAGE(ejemplos1[indice].estado, ptAct[indice].estado, mensaje);
+	}
 
-Actuadores_Encender(&ptAct[0], Enc_act);
-Actuadores_MEF(&ptAct[0]);
-TEST_ASSERT_EQUAL_HEX8(MANTENCION_ENCENDIDO,ptAct[0].estado); // verifico que todos los actuadores esten encendidos
 
-Actuadores_Apagar(&ptAct[0], Apagar_act);
-Actuadores_MEF(&ptAct[0]);
-TEST_ASSERT_EQUAL_HEX8(MANTENCION_APAGADO,ptAct[0].estado); // verifico que todos los actuadores esten apagados
+	for( indice = 0; indice < sizeof(ejemplos2)/sizeof (struct ejemplo_s); indice++){
+		Actuadores_Encender(&ptAct[indice], indice);
+		Actuadores_MEF(&ptAct[indice]);
+		sprintf(mensaje, "Test Estado Actuador: %d", indice);
+		TEST_ASSERT_EQUAL_MESSAGE(ejemplos2[indice].estado, ptAct[indice].estado, mensaje);
+	}
+
+
 
 
 }
-#endif
+
 
 
 #if 0
