@@ -1,30 +1,6 @@
 #include "build/temp/_test_actuadores.c"
 #include "actuadores.h"
 #include "unity.h"
- void setup(void){
-
-
-
-}
-
-
-
-
-
-
-
-void tearDown(void){
-
-
-
-
-
-}
-
-
-
-
-
 void test_actuadoresOffAfterCreate(void){
 
 actuador_t ptAct[6];
@@ -61,11 +37,11 @@ actuador_t ptAct[6];
 
   sprintf(mensaje, "Test PWM Actuador: %d", indice);
 
-  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].pwm)), (UNITY_INT)((ptAct[indice].PWM_actual)), ((mensaje)), (UNITY_UINT)(43), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].pwm)), (UNITY_INT)((ptAct[indice].PWM_actual)), ((mensaje)), (UNITY_UINT)(33), UNITY_DISPLAY_STYLE_INT);
 
   sprintf(mensaje, "Test Estado Actuador: %d", indice);
 
-  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(45), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(35), UNITY_DISPLAY_STYLE_INT);
 
  }
 
@@ -117,7 +93,7 @@ actuador_t ptAct[6];
 
   sprintf(mensaje, "Test Estado Actuador: %d", indice);
 
-  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(71), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_INT);
 
  }
 
@@ -173,7 +149,7 @@ actuador_t ptAct[6];
 
   sprintf(mensaje, "Test Estado Actuador: %d", indice);
 
-  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(99), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_INT);
 
  }
 
@@ -243,7 +219,7 @@ actuador_t ptAct[6];
 
   sprintf(mensaje, "Test Estado Actuador: %d", indice);
 
-  UnityAssertEqualNumber((UNITY_INT)((ejemplos1[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(134), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos1[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(124), UNITY_DISPLAY_STYLE_INT);
 
  }
 
@@ -259,11 +235,71 @@ actuador_t ptAct[6];
 
   sprintf(mensaje, "Test Estado Actuador: %d", indice);
 
-  UnityAssertEqualNumber((UNITY_INT)((ejemplos2[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(142), UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((UNITY_INT)((ejemplos2[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(132), UNITY_DISPLAY_STYLE_INT);
 
  }
 
 
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_ejecutarTabla(void){
+
+actuador_t ptAct[6];
+
+
+
+const struct ejemplo_c{
+
+ uint8_t accion;
+
+ uint8_t estado;
+
+ }ejemplosc[] = {
+
+ {.accion = 1, .estado = INICIO_ENCENDIDO},
+
+ {.accion = 1, .estado = INICIO_ENCENDIDO},
+
+ {.accion = 1, .estado = INICIO_ENCENDIDO},
+
+ {.accion = 1, .estado = INICIO_ENCENDIDO},
+
+ {.accion = 1, .estado = INICIO_ENCENDIDO},
+
+ {.accion = 1, .estado = INICIO_ENCENDIDO},
+
+ };
+
+ uint8_t indice;
+
+ char mensaje[64];
+
+ Actuadores_Create(&ptAct[0]);
+
+
+
+ for( indice = 0; indice < sizeof(ejemplosc)/sizeof (struct ejemplo_c); indice++){
+
+  Actuadores_EjecutarTabla(&ptAct[indice], indice, ejemplosc[indice].accion);
+
+  sprintf(mensaje, "Test Estado Actuador: %d", indice);
+
+  UnityAssertEqualNumber((UNITY_INT)((ejemplosc[indice].estado)), (UNITY_INT)((ptAct[indice].estado)), ((mensaje)), (UNITY_UINT)(163), UNITY_DISPLAY_STYLE_INT);
+
+ }
 
 
 

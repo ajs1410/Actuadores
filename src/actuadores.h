@@ -17,6 +17,9 @@ extern "C" {
 
 #define TIEMPO_INICIO_ENCENDIDO 0
 #define TIEMPO_INICIO_APAGADO 1
+#define ENCENDER 1
+#define APAGAR 2
+#define MANTENER 3
 
 typedef enum {INICIO_ENCENDIDO,MANTENCION_ENCENDIDO, INICIO_APAGADO,MANTENCION_APAGADO} estadoMEF_Actuador_t;
 
@@ -37,6 +40,7 @@ uint16_t Tiempo[NESTADOStiempo];
 void Actuadores_Create(actuador_t * ptAct);
 void Actuadores_Encender(actuador_t * ptAct, uint8_t Ind_actuador);
 void Actuadores_Apagar(actuador_t * ptAct, uint8_t Ind_actuador);
+void Actuadores_EjecutarTabla(actuador_t * ptAct,uint8_t Ind_actuador, uint8_t accion);
 
 
 #ifdef __cplusplus

@@ -22,12 +22,12 @@ QueueHandle_t queActuadores[Nactuadores];
 // Inicializa a todos los actuadores apagados
 void Actuadores_Create(actuador_t * ptAct){
 uint16_t i;
-for(i = 0; i < Nactuadores ; i++){
-	Actuadores[i].PWM_actual = Actuadores[i].Porcentaje_pwm[MANTENCION_APAGADO];
-	Actuadores[i].estado = MANTENCION_APAGADO;
-	ptAct[i].PWM_actual = Actuadores[i].PWM_actual;
-	ptAct[i].estado = Actuadores[i].estado;
-}
+	for(i = 0; i < Nactuadores ; i++){
+		Actuadores[i].PWM_actual = Actuadores[i].Porcentaje_pwm[MANTENCION_APAGADO];
+		Actuadores[i].estado = MANTENCION_APAGADO;
+		ptAct[i].PWM_actual = Actuadores[i].PWM_actual;
+		ptAct[i].estado = Actuadores[i].estado;
+	}
 
 }
 
@@ -85,14 +85,20 @@ switch(Act->estado){
 	}
 }
 
-#if 0
+
 
 // recive datos de una tabla y enciendo/apaga el actuador segun indique los valores de la tabla.
-void Actuadores_EjecutarTabla(actuador_t * ptAct, uint16_t tabla){
-Actuadores_Encender(ptAct, (uint8_t)(0x00ff & tabla));
-Actuadores_Apagar  (ptAct, (uint8_t)(tabla >> 8));
+void Actuadores_EjecutarTabla(actuador_t * ptAct,uint8_t Ind_actuador, uint8_t accion){
+
+	if (accion == ENCENDER){
+		Actuadores_Encender(ptAct, Ind_actuador);
+	}
+	else if(accion == APAGAR){
+		Actuadores_Apagar  (ptAct, Ind_actuador);
+	}
+
+
 } 
-#endif
 
 //------------------------------------------------------------------------------------------------------------------
 #if 0

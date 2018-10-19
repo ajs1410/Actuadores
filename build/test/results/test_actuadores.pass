@@ -4,23 +4,26 @@
   :file: test_actuadores.c
 :successes:
 - :test: test_actuadoresOffAfterCreate
-  :line: 25
+  :line: 15
   :message: ''
 - :test: test_encenderActuadores
-  :line: 51
+  :line: 41
   :message: ''
 - :test: test_apagarActuadores
-  :line: 79
+  :line: 69
   :message: ''
 - :test: test_estadosActuadores
-  :line: 106
+  :line: 96
+  :message: ''
+- :test: test_ejecutarTabla
+  :line: 142
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 5
+  :passed: 5
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.005328056002326775
+:time: 0.00619860000006156
